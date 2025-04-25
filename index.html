@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xingbo Yao - Personal Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --card-bg: #fff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --paper-badge-color: #6c5ce7; /* Purple color */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            color: #fff;
+            padding: 100px 0 70px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-text {
+            flex: 1;
+            padding-right: 30px;
+        }
+        
+        .header-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid rgba(255,255,255,0.3);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .name {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .name .greeting {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        
+        .title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        #static-text {
+            font-weight: 500;
+        }
+        
+        #changing-text {
+            font-weight: 500;
+            font-size: 1.8rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        #changing-text::after {
+            content: '|';
+            position: absolute;
+            right: -8px;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .header-info {
+            margin-top: 30px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .info-item i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.2);
+            color: #fff;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: #fff;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Navigation Styles */
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Common Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Skills Section Styles */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .skill-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            border-radius: 4px;
+            color: #fff;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .skill-tag i {
+            margin-right: 8px;
+        }
+        
+        .skill-dl { background-color: #4B0082; }
+        .skill-ml { background-color: #008080; }
+        .skill-recsys { background-color: #FF6347; }
+        .skill-pytorch { background-color: #EE4C2C; }
+        .skill-sklearn { background-color: #F7931E; }
+        .skill-recall { background-color: #FF6B6B; }
+        .skill-ranking { background-color: #6B66FF; }
+        .skill-feature { background-color: #66CDAA; }
+        .skill-aigc { background-color: #9932CC; }
+        .skill-c { background-color: #A8B9CC; }
+        .skill-cpp { background-color: #00599C; }
+        .skill-java { background-color: #E76F00; }
+        .skill-python { background-color: #3776AB; }
+        .skill-anaconda { background-color: #44A833; }
+        .skill-linux { background-color: #FCC624; color: #333; }
+        .skill-shell { background-color: #4EAA25; }
+        .skill-mysql { background-color: #4479A1; }
+        .skill-ros { background-color: #22314E; }
+        .skill-latex { background-color: #008080; }
+        .skill-english { background-color: #3498db; }
+        
+        /* Papers Section Styles */
+        .papers-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .paper-card {
+            display: flex;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .paper-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .paper-image {
+            flex: 0 0 200px;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .paper-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .paper-content {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        .paper-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .paper-authors {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+        
+        .paper-authors span {
+            font-weight: 600;
+        }
+        
+        .paper-venue {
+            font-style: italic;
+            margin-bottom: 10px;
+            color: #666;
+        }
+        
+        .paper-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background-color: var(--paper-badge-color);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            margin-bottom: 5px;
+        }
+        
+        /* Awards Section Styles */
+        .awards-section {
+            background-color: #f5f9fc;
+        }
+        
+        .awards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .award-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .award-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .award-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+        
+        .award-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .award-date {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .award-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        
+        .award-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        /* Experience Section Styles */
+        .experience-section {
+            background-color: #fff;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline-item {
+            padding: 20px 30px;
+            position: relative;
+            background-color: inherit;
+            width: 100%;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: var(--card-bg);
+            position: relative;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .timeline-date {
+            padding: 5px 15px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .timeline-company {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .timeline-desc ul {
+            padding-left: 20px;
+        }
+        
+        .timeline-desc li {
+            margin-bottom: 8px;
+        }
+        
+        /* Projects Section Styles */
+        .projects-section {
+            background-color: #f5f9fc;
+        }
+        
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .project-date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .project-desc {
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            white-space: pre-line;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .project-tag {
+            padding: 5px 10px;
+            background-color: var(--paper-badge-color);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer p {
+            margin: 10px 0;
+        }
+        
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .header-info {
+                justify-content: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .paper-card {
+                flex-direction: column;
+            }
+            
+            .paper-image {
+                flex: 0 0 150px;
+            }
+            
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1 class="name"><span class="greeting">Hi 👋 I'm </span> Xingbo Yao</h1>
+                    <p class="title"><span id="static-text">I'm a</span> <span id="changing-text"></span></p>
+                    <p>I'm a Master's student in Artificial Intelligence at The Hong Kong University of Science and Technology (2024.9-2026.7). Advised by <a href="https://www.hkust-gz.edu.cn/zh/people/hui-xiong/" style="color: white; text-decoration: underline;">Prof. Hui Xiong</a></p>
+                    
+                    <div class="header-info">
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>xingboyao163@163.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+86 15852369831</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fab fa-weixin"></i>
+                            <span>symon027</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Guangdong Province, China</span>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://github.com/YaoXingbo" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://scholar.google.cz/citations?user=xAACtNMAAAAJ&hl=zh-CN" class="social-link" target="_blank"><i class="fas fa-graduation-cap"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fas fa-file-pdf"></i></a>
+                    </div>
+                </div>
+                
+                <div class="header-image">
+                    <img src="0.png" alt="Xingbo Yao">
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">XB</div>
+            <ul class="nav-links">
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#papers">Publications</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="section skills-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Skills</h2>
+                <p class="section-subtitle">My Professional Skills and Tools</p>
+            </div>
+            <div class="skills-container">
+                <div class="skill-tag skill-dl">
+                    <i class="fas fa-network-wired"></i> Deep Learning
+                </div>
+                <div class="skill-tag skill-ml">
+                    <i class="fas fa-robot"></i> Machine Learning
+                </div>
+                <div class="skill-tag skill-recsys">
+                    <i class="fas fa-thumbs-up"></i> Recommender Systems
+                </div>
+                <div class="skill-tag skill-pytorch">
+                    <i class="fas fa-fire"></i> PyTorch
+                </div>
+                <div class="skill-tag skill-sklearn">
+                    <i class="fas fa-brain"></i> Scikit-learn
+                </div>
+                <div class="skill-tag skill-recall">
+                    <i class="fas fa-search"></i> Recall
+                </div>
+                <div class="skill-tag skill-ranking">
+                    <i class="fas fa-sort-amount-down"></i> Ranking
+                </div>
+                <div class="skill-tag skill-feature">
+                    <i class="fas fa-cubes"></i> Feature Engineering
+                </div>
+                <div class="skill-tag skill-aigc">
+                    <i class="fas fa-magic"></i> AIGC
+                </div>
+                <div class="skill-tag skill-c">
+                    <i class="fas fa-code"></i> C
+                </div>
+                <div class="skill-tag skill-cpp">
+                    <i class="fas fa-code"></i> C++
+                </div>
+                <div class="skill-tag skill-java">
+                    <i class="fab fa-java"></i> Java
+                </div>
+                <div class="skill-tag skill-python">
+                    <i class="fab fa-python"></i> Python
+                </div>
+                <div class="skill-tag skill-anaconda">
+                    <i class="fas fa-snake"></i> Anaconda
+                </div>
+                <div class="skill-tag skill-linux">
+                    <i class="fab fa-linux"></i> Linux
+                </div>
+                <div class="skill-tag skill-shell">
+                    <i class="fas fa-terminal"></i> Shell
+                </div>
+                <div class="skill-tag skill-mysql">
+                    <i class="fas fa-database"></i> MySQL
+                </div>
+                <div class="skill-tag skill-ros">
+                    <i class="fas fa-robot"></i> ROS
+                </div>
+                <div class="skill-tag skill-latex">
+                    <i class="fas fa-square-root-alt"></i> LaTeX
+                </div>
+                <div class="skill-tag skill-english">
+                    <i class="fas fa-language"></i> CET-6 (501)
+                </div>
+                <div class="skill-tag skill-english">
+                    <i class="fas fa-language"></i> CET-4 (609)
+                </div>
+                <div class="skill-tag skill-english">
+                    <i class="fas fa-language"></i> IELTS 6.5
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Publications Section -->
+    <section id="papers" class="section papers-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Publications</h2>
+                <p class="section-subtitle">My Research Contributions and Academic Work</p>
+            </div>
+            <div class="papers-container">
+                <div class="paper-card">
+                    <div class="paper-image">
+                        <img src="1.png" alt="Paper Image">
+                    </div>
+                    <div class="paper-content">
+                        <h3 class="paper-title">Autonomous navigation and adaptive path planning in dynamic greenhouse environments utilizing improved LeGO-LOAM and Open Planner algorithms</h3>
+                        <p class="paper-authors"><span>Yao, X.</span>, Zhang, B., Bai, Y., et al.</p>
+                        <p class="paper-venue">Journal of Field Robotics (2024)</p>
+                        <div>
+                            <span class="paper-badge">CAS Q1 TOP</span>
+                            <span class="paper-badge">SCI</span>
+                            <span class="paper-badge">IF=8.3</span>
+                            <span class="paper-badge">First Author</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="paper-card">
+                    <div class="paper-image">
+                        <img src="2.png" alt="Paper Image">
+                    </div>
+                    <div class="paper-content">
+                        <h3 class="paper-title">Adaptive Navigation for Robots in Unstructured Agricultural Environments Using Stable Feature Localization and Multi-Sensor Obstacle Detection</h3>
+                        <p class="paper-authors"><span>Yao, X.</span>, Zhang, B., Cao, G., et al.</p>
+                        <p class="paper-venue">Computers and Electronics in Agriculture (2025)</p>
+                        <div>
+                            <span class="paper-badge">CAS Q1 TOP</span>
+                            <span class="paper-badge">SCI</span>
+                            <span class="paper-badge">IF=8.7</span>
+                            <span class="paper-badge">First Author</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="paper-card">
+                    <div class="paper-image">
+                        <img src="3.png" alt="Paper Image">
+                    </div>
+                    <div class="paper-content">
+                        <h3 class="paper-title">MagicCity: Geometry-Aware 3D City Generation from Satellite Imagery with Multi-View Consistency</h3>
+                        <p class="paper-authors"><span>Yao, X.</span>, Wu, H., et al.</p>
+                        <p class="paper-venue">IEEE International Conference on Computer Vision (ICCV) (2025)</p>
+                        <div>
+                            <span class="paper-badge">CCF A</span>
+                            <span class="paper-badge">Top-tier Conference</span>
+                            <span class="paper-badge">First Author</span>
+                            <span class="paper-badge">Under Review</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="paper-card">
+                    <div class="paper-image">
+                        <img src="4.png" alt="Paper Image">
+                    </div>
+                    <div class="paper-content">
+                        <h3 class="paper-title">Design and Implementation of Malicious URL Detection System Based on Stacking Ensemble Learning</h3>
+                        <p class="paper-authors">Zhang, Y., Lv, P., Zhang, Y., <span>Yao, X.*</span>, & Feng, Y.</p>
+                        <p class="paper-venue">Modern Electronic Technology (2023)</p>
+                        <div>
+                            <span class="paper-badge">Chinese Core Journal</span>
+                            <span class="paper-badge">Corresponding Author</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="paper-card">
+                    <div class="paper-content">
+                        <h3 class="paper-title">Software Copyright: Agricultural Robot Localization, Mapping and Path Planning System for Complex Greenhouse Environments V1.0</h3>
+                        <p class="paper-venue">May 9, 2023. 2024SR0327245</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Awards Section -->
+    <section id="awards" class="section awards-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Awards</h2>
+                <p class="section-subtitle">My Achievements and Academic Honors</p>
+            </div>
+            
+            <div class="awards-container">
+                <div class="award-card">
+                    <h3 class="award-title">HKUST Full Scholarship for Master's Program</h3>
+                    <div class="award-footer">
+                        <p class="award-date"><i class="far fa-calendar-alt"></i> 2024</p>
+                        <div class="award-badges">
+                            <span class="award-badge">CNY 240,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <h3 class="award-title">National Scholarship</h3>
+                    <div class="award-footer">
+                        <p class="award-date"><i class="far fa-calendar-alt"></i> 2023</p>
+                        <div class="award-badges">
+                            <span class="award-badge">National Level</span>
+                            <span class="award-badge">Top 0.2%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <h3 class="award-title">Outstanding Student First Prize</h3>
+                    <div class="award-footer">
+                        <p class="award-date"><i class="far fa-calendar-alt"></i> 2020-2022</p>
+                        <div class="award-badges">
+                            <span class="award-badge">3 Consecutive Years</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <h3 class="award-title">Tang Zhongying Moral Education Scholarship</h3>
+                    <div class="award-footer">
+                        <p class="award-date"><i class="far fa-calendar-alt"></i> 2019-2022</p>
+                        <div class="award-badges">
+                                                        <span class="award-badge">4 Consecutive Years</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <h3 class="award-title">National Inspirational Scholarship</h3>
+                    <div class="award-footer">
+                        <p class="award-date"><i class="far fa-calendar-alt"></i> 2021-2022</p>
+                        <div class="award-badges">
+                            <span class="award-badge">National Level</span>
+                            <span class="award-badge">2 Consecutive Years</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <h3 class="award-title">Outstanding Youth League Cadre</h3>
+                    <div class="award-footer">
+                        <p class="award-date"><i class="far fa-calendar-alt"></i> 2021-2022</p>
+                        <div class="award-badges">
+                            <span class="award-badge">2 Consecutive Years</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="award-card">
+                    <h3 class="award-title">25th China Robot and AI Competition</h3>
+                    <div class="award-footer">
+                        <p class="award-date"><i class="far fa-calendar-alt"></i> 2022</p>
+                        <div class="award-badges">
+                            <span class="award-badge">National Level</span>
+                            <span class="award-badge">First Prize</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <h3 class="award-title">2022 China Intelligent Robot Combat and Competition</h3>
+                    <div class="award-footer">
+                        <p class="award-date"><i class="far fa-calendar-alt"></i> 2022</p>
+                        <div class="award-badges">
+                            <span class="award-badge">National Level</span>
+                            <span class="award-badge">First Prize</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="award-card">
+                    <h3 class="award-title">International University Intelligent Agricultural Equipment Innovation Competition</h3>
+                    <div class="award-footer">
+                        <p class="award-date"><i class="far fa-calendar-alt"></i> 2022</p>
+                        <div class="award-badges">
+                            <span class="award-badge">International Level</span>
+                            <span class="award-badge">Second Prize</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <h3 class="award-title">2023 China University Computer Design Competition</h3>
+                    <div class="award-footer">
+                        <p class="award-date"><i class="far fa-calendar-alt"></i> 2023</p>
+                        <div class="award-badges">
+                            <span class="award-badge">National Level</span>
+                            <span class="award-badge">Second Prize</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="award-card">
+                    <h3 class="award-title">14th Blue Bridge Cup Competition Jiangsu Division Java Group A</h3>
+                    <div class="award-footer">
+                        <p class="award-date"><i class="far fa-calendar-alt"></i> 2023</p>
+                        <div class="award-badges">
+                            <span class="award-badge">Provincial Level</span>
+                            <span class="award-badge">Second Prize</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience" class="section experience-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Experience</h2>
+                <p class="section-subtitle">My Professional Experience and Work History</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3 class="timeline-title">Machine Learning Algorithm Engineer</h3>
+                            <span class="timeline-date">Jun 2022 - Sep 2022</span>
+                        </div>
+                        <p class="timeline-company">Zhiwei Intelligence Technology Co., Ltd. - Technical Department</p>
+                        <div class="timeline-desc">
+                            <ul>
+                                <li>Developed a malicious URL detection system based on machine learning algorithms:</li>
+                                <li>Responsible for collecting and processing 4 million URL data to create datasets, designing regular expressions for data cleaning, and implementing vector-based feature engineering to solve protocol interference and text sparsity issues.</li>
+                                <li>Designed and implemented a malicious URL detection algorithm based on Stacking ensemble learning (including Random Forest, SVM, Naive Bayes to Logistic Regression) and gcForest, ultimately achieving a high accuracy rate of 98.75%.</li>
+                                <li>Utilized Flask and Redis technologies to implement model service encapsulation and deployment, with related achievements published in a Chinese core journal.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="section projects-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Projects</h2>
+                <p class="section-subtitle">My Research Projects and Practical Achievements</p>
+            </div>
+            
+            <div class="projects-container">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="2-1.png" alt="Project Image">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">3D City Generation Based on Generative Models</h3>
+                        <p class="project-date"><i class="far fa-calendar-alt"></i> Mar 2024 - Mar 2025</p>
+                        <p class="project-desc">- Developed deep learning-based generative models for 3D city generation, solving texture and geometric misalignment issues in traditional generative models for large-scale scene tasks
+- Designed a dual-modal encoder that fuses CLIP semantic features with geometric features to build a city-level embedding space
+- Proposed a multi-branch cross-attention mechanism, achieving 60-frame multi-view synchronized generation, with the final synthesized high-quality 3D cities showing more than 5% improvement in geometric error and texture quality compared to baseline methods
+- Project results were written as a paper with first authorship and submitted to the top computer science conference ICCV</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Computer Vision</span>
+                            <span class="project-tag">Generative Models</span>
+                            <span class="project-tag">Attention</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="2-2.png" alt="Project Image">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">User Behavior Prediction in News Recommendation Scenarios</h3>
+                        <p class="project-date"><i class="far fa-calendar-alt"></i> Oct 2024 - Mar 2025</p>
+                        <p class="project-desc">- Designed a recommendation system based on multi-path recall, feature engineering, and ranking to predict future click trends based on users' historical click behaviors and recommend relevant content
+- In the recall stage, used UserCF, ItemCF, and YoutubeDNN algorithms for multi-path recall, combining news embeddings and similarity rules to effectively solve the cold start problem
+- Built multiple features including user behavior, news content, and time decay in the feature engineering stage
+- Used model fusion with Wide&Deep, DeepFM, and DIN in the ranking stage to optimize recommendation results, ultimately achieving an AUC of 0.8</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Recommender Systems</span>
+                            <span class="project-tag">Recall</span>
+                            <span class="project-tag">Feature Engineering</span>
+                            <span class="project-tag">Ranking</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="2-3.png" alt="Project Image">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Malicious URL Detection System Based on Stacking Ensemble Learning</h3>
+                        <p class="project-date"><i class="far fa-calendar-alt"></i> Jul 2022 - Sep 2022</p>
+                        <p class="project-desc">- Designed and implemented a malicious URL detection algorithm based on Stacking ensemble learning and gcForest
+- Improved detection accuracy to 98.7% through multi-layer model fusion
+- Utilized Flask and Redis technologies for model service encapsulation and deployment
+- Designed a feature extraction module to extract semantic and structural features from URLs
+- Related achievements were published in the Chinese core journal "Modern Electronic Technology"</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">Feature Engineering</span>
+                            <span class="project-tag">Ensemble Learning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Xingbo Yao. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Typing effect implementation
+        const titles = [
+            "AI Researcher",
+            "Machine Learning Engineer", 
+            "Computer Vision Researcher",
+            "Algorithm Enthusiast"
+        ];
+        
+        let currentIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+        const deletingSpeed = 50;
+        const pauseTime = 1500;
+        
+        const changingText = document.getElementById('changing-text');
+        
+        function typeEffect() {
+            const currentTitle = titles[currentIndex];
+            
+            if (isDeleting) {
+                // Delete text
+                changingText.textContent = currentTitle.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = deletingSpeed;
+            } else {
+                // Add text
+                changingText.textContent = currentTitle.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 100;
+            }
+            
+            // If current word typing is complete
+            if (!isDeleting && charIndex === currentTitle.length) {
+                // Pause, then start deleting
+                isDeleting = true;
+                typingSpeed = pauseTime;
+            } else if (isDeleting && charIndex === 0) {
+                // Deletion complete, move to next word
+                isDeleting = false;
+                currentIndex = (currentIndex + 1) % titles.length;
+            }
+            
+            setTimeout(typeEffect, typingSpeed);
+        }
+        
+        // Start typing effect
+        window.addEventListener('load', typeEffect);
+        
+        // Smooth scrolling effect
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
